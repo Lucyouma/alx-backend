@@ -8,7 +8,7 @@ from base_caching import BaseCaching
 
 class MRUCache(BaseCaching):
     """A class `MRUCache` that inherits
-        from `BaseCaching` and is a caching system
+       from `BaseCaching` and is a caching system
     """
     def __init__(self):
         """Initializes the cache.
@@ -26,7 +26,7 @@ class MRUCache(BaseCaching):
                 mru_key, _ = self.cache_data.popitem(False)
                 print("DISCARD:", mru_key)
             self.cache_data[key] = item
-            self.cache_data.move_to_end(key, last=False
+            self.cache_data.move_to_end(key, last=False)
         else:
             self.cache_data[key] = item
 
