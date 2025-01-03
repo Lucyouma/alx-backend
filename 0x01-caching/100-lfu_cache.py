@@ -35,13 +35,13 @@ class LFUCache(BaseCaching):
                 max_positions.append(i)
             elif key_freq[1] < self.keys_freq[max_positions[-1]][1]:
                 max_positions.append(i)
-            max_positions.reverse()
-            for pos in max_positions:
-                if self.keys_freq[pos][1] > mru_freq:
-                    break
-                ins_pos = pos
-            self.keys_freq.pop(mru_pos)
-            self.keys_freq.insert(ins_pos, [mru_key, mru_freq])
+        max_positions.reverse()
+        for pos in max_positions:
+            if self.keys_freq[pos][1] > mru_freq:
+                break
+            ins_pos = pos
+        self.keys_freq.pop(mru_pos)
+        self.keys_freq.insert(ins_pos, [mru_key, mru_freq])
 
     def put(self, key, item):
         """Adds an item in the cache.
@@ -70,4 +70,4 @@ class LFUCache(BaseCaching):
         """
         if key is not None and key in self.cache_data:
             self.__reorder_items(key)
-        return self.cache_data.get(key, None)i
+        return self.cache_data.get(key, None)
